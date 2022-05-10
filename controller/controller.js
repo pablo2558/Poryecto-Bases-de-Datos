@@ -45,7 +45,7 @@ const editarCliente = async (req, res) => {
         await Client.findByIdAndUpdate(id, req.body)
         res.status(202).json({cliente, msg: "Cliente editado exitosamente"}) 
     } else {
-        res.status(400).json({ errors: error.array() });
+        res.status(501).json(error);
     }
 } 
 
@@ -54,7 +54,7 @@ const borrarCliente = async (req, res) => {
         const cliente = await Client.findByIdAndDelete(req.params.id)
         res.json({msg: "Cliente eliminado exitosamente", cliente}) 
     } catch (error) {
-        res.status(400).json({msg: "problemas a la hora de borrar la informacion", error})
+        res.status(400).json({msg: "problemas a la hora de cargar la informacion"})
     }
 } 
 
