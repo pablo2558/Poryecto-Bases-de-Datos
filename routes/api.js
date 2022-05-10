@@ -10,13 +10,13 @@ router.get("/ver/:id", vistaUnCliente)
 router.post('/crear', [
     check("name").not().isEmpty().withMessage("el campo esta vacio").isLength({max:25, min:3}).withMessage("su nombre debe contener al menos 4 letras y menos de 15 caracteres"),
     check("email").not().isEmpty().withMessage("el campo esta vacio").isEmail().withMessage("formato de correo lectronico invalido, ejemplo: example@email.com"),
-    check("dni").not().isEmpty().withMessage("el campo esta vacio").isLength({max:8, min:8}).withMessage("debe contener 8 caracteres"),
+    check("dni").not().isEmpty().withMessage("el campo esta vacio").isLength({max:8, min:8}).withMessage("debe contener 8 caracteres").isNumeric().withMessage("Ingrese un valor numerico"),
     check("nationality").not().isEmpty().withMessage("el campo esta vacio")
 ], crearCliente);
 router.put("/editar/:id", [
     check("name").not().isEmpty().withMessage("el campo esta vacio").isLength({max:25, min:3}).withMessage("su nombre debe contener al menos 4 letras y menos de 15 caracteres"),
     check("email").not().isEmpty().withMessage("el campo esta vacio").isEmail().withMessage("formato de correo lectronico invalido, ejemplo: example@email.com"),
-    check("dni").not().isEmpty().withMessage("el campo esta vacio").isLength({max:8, min:8}).withMessage("debe contener 8 caracteres"),
+    check("dni").not().isEmpty().withMessage("el campo esta vacio").isLength({max:8, min:8}).withMessage("debe contener 8 caracteres").isNumeric().withMessage("Ingrese un valor numerico"),
     check("nationality").not().isEmpty().withMessage("el campo esta vacio")
 ], editarCliente)
 router.delete("/eliminar/:id", validarId, borrarCliente)
